@@ -32,6 +32,14 @@ Detalhamento completo de cada item na [documentação técnica](DOCUMENTACAO_PRO
 
 ---
 
+## ✨ Recursos adicionais
+
+- **Busca em tempo real** na listagem de funcionários (por nome, data, salário ou status)
+- **Edição via ícone de lápis** na linha da tabela, evitando exclusões acidentais por seleção
+- **Valores de salário formatados em moeda** (`R$ 3.500,00`) na tabela e no formulário
+
+---
+
 ## 🏗️ Arquitetura
 
 Padrão **MVC + DAO**, em `com.saam.gestao`:

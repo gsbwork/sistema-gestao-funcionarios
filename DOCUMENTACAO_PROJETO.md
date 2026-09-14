@@ -36,7 +36,7 @@ com.saam.gestao
  ├── dao/       → UsuarioDAO, FuncionarioDAO (acesso a dados via SQL nativo)
  ├── service/   → AuthService, FuncionarioService (validações e regras de negócio)
  ├── exception/ → DatabaseException, ValidationException
- ├── util/      → HashUtil, PasswordPolicy, BordaArredondada, BotaoArredondado, PlaceholderTextField, OlhoIcon
+ ├── util/      → HashUtil, PasswordPolicy, BordaArredondada, BotaoArredondado, PlaceholderTextField
  └── view/      → LoginView, CadastroUsuarioView, FuncionarioView (telas Swing)
 ```
 
@@ -98,7 +98,7 @@ As três telas foram construídas no **GUI Builder do NetBeans (Matisse)**, com 
 
 - **`LoginView`** — campos de e-mail e senha, botão de mostrar/ocultar senha, atalho de Enter para autenticar, link para a tela de cadastro.
 - **`CadastroUsuarioView`** — campos de nome, e-mail, senha e confirmação, checklist de complexidade de senha em tempo real, botão de mostrar/ocultar senha nos dois campos.
-- **`FuncionarioView`** — formulário de cadastro (nome, data de admissão, salário, status) acima de uma `JTable` com os registros; clicar em uma linha carrega os dados para edição; botão de excluir aparece somente quando há um registro selecionado; botão de sair retorna à tela de Login sem encerrar a aplicação.
+- **`FuncionarioView`** — formulário de cadastro (nome, data de admissão, salário, status) acima de uma `JTable` com os registros. Campo de busca filtra a tabela em tempo real (por nome, data, salário ou status). Editar um registro é feito clicando no ícone de lápis da linha (não basta selecionar a linha); o botão de excluir aparece somente após esse clique. Os valores de salário são exibidos formatados em moeda (`R$ 3.500,00`) tanto na tabela quanto no rótulo do campo de formulário. Botão de sair retorna à tela de Login sem encerrar a aplicação.
 
 O layout segue uma paleta de cores clara inspirada na identidade visual da SAAM/SISAUDCON (fundo lilás claro, cartões brancos, azul-arroxeado como cor primária), com componentes que reforçam a leitura da interface por proximidade e similaridade (campos relacionados agrupados, botões de mesmo tipo com o mesmo estilo, ação destrutiva — excluir — sinalizada em vermelho).
 
