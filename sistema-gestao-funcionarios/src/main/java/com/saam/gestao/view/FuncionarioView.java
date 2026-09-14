@@ -352,6 +352,10 @@ public class FuncionarioView extends javax.swing.JFrame {
         }
         tblFuncionarios.setModel(modelo);
 
+        javax.swing.table.DefaultTableCellRenderer rendererId = new javax.swing.table.DefaultTableCellRenderer();
+        rendererId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tblFuncionarios.getColumnModel().getColumn(0).setCellRenderer(rendererId);
+
         javax.swing.table.TableColumn colunaAcoes = tblFuncionarios.getColumnModel().getColumn(COLUNA_ACOES);
         colunaAcoes.setMinWidth(44);
         colunaAcoes.setMaxWidth(44);
