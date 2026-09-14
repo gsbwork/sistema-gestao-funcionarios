@@ -97,6 +97,7 @@ public class FuncionarioView extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         lblBuscar = new javax.swing.JLabel();
         txtBusca = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFuncionarios = new javax.swing.JTable();
 
@@ -156,7 +157,7 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnExcluir.setForeground(new java.awt.Color(198, 40, 40));
         btnExcluir.setText("<html><u>Excluir selecionado</u></html>");
         btnExcluir.setBorderPainted(false);
@@ -203,6 +204,10 @@ public class FuncionarioView extends javax.swing.JFrame {
         txtBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtBusca.setToolTipText("Buscar por nome, data, salário ou status");
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(63, 81, 181));
+        lblTotal.setText("Total de funcionários: 0");
+
         javax.swing.GroupLayout pnlFormLayout = new javax.swing.GroupLayout(pnlForm);
         pnlForm.setLayout(pnlFormLayout);
         pnlFormLayout.setHorizontalGroup(
@@ -234,7 +239,7 @@ public class FuncionarioView extends javax.swing.JFrame {
                         .addComponent(btnSalvar)
                         .addGap(20, 20, 20)
                         .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
@@ -279,6 +284,7 @@ public class FuncionarioView extends javax.swing.JFrame {
             }
         ));
         tblFuncionarios.setRowSelectionAllowed(false);
+        tblFuncionarios.setRowHeight(24);
         jScrollPane1.setViewportView(tblFuncionarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,7 +298,9 @@ public class FuncionarioView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblBuscar)
                         .addGap(8, 8, 8)
-                        .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblTotal))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
@@ -304,7 +312,8 @@ public class FuncionarioView extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBuscar)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotal))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
@@ -319,6 +328,7 @@ public class FuncionarioView extends javax.swing.JFrame {
 
     private void carregarTabela() {
         funcionariosExibidos = funcionarioService.listarTodos();
+        lblTotal.setText("Total de funcionários: " + funcionariosExibidos.size());
 
         javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(
                 new Object[]{"ID", "Nome", "Data Admissão", "Salário", "Status", "Ações"}, 0) {
@@ -440,8 +450,13 @@ public class FuncionarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        new com.saam.gestao.view.LoginView().setVisible(true);
-        this.dispose();
+        int confirmacao = javax.swing.JOptionPane.showConfirmDialog(this,
+                "Deseja realmente sair?", "Confirmar saída",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+        if (confirmacao == javax.swing.JOptionPane.YES_OPTION) {
+            new com.saam.gestao.view.LoginView().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     /**
@@ -492,6 +507,7 @@ public class FuncionarioView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblMoeda;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlForm;
     private javax.swing.JTable tblFuncionarios;
     private javax.swing.JTextField txtBusca;

@@ -37,6 +37,8 @@ Detalhamento completo de cada item na [documentação técnica](DOCUMENTACAO_PRO
 - **Busca em tempo real** na listagem de funcionários (por nome, data, salário ou status)
 - **Edição via ícone de lápis** na linha da tabela, evitando exclusões acidentais por seleção
 - **Valores de salário formatados em moeda** (`R$ 3.500,00`) na tabela e no formulário
+- **Contador de total de funcionários cadastrados**, sempre visível acima da tabela
+- **Confirmação antes de sair**, evitando fechamento acidental da tela
 
 ---
 
